@@ -64,7 +64,6 @@
   .project p { color: var(--soft); margin: 10px 0 16px; max-width: 40ch; }
   .tag { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; display: block; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-  .project .chips:last-child { margin-bottom: 0; }
   .chips span { font-family: var(--mono); font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--rule); color: var(--soft); }
   .shots { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 16px; overflow-x: auto; padding-bottom: 4px; }
   .shots img { width: 100%; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: 18px; border: 2px solid #2A2F3C; background: #000; }
@@ -103,6 +102,23 @@
     .fan { height: 330px; }
     .shots { grid-auto-columns: 62%; }
     .mosaic { grid-template-columns: 1fr; }
+  }
+
+  /* in-page player: the game runs in a phone-shaped frame on top of the page */
+  button.btn { font-family: inherit; cursor: pointer; }
+  #player { border: 0; padding: 0; background: transparent; color: var(--ink); max-width: none; max-height: none; overflow: visible; }
+  #player::backdrop { background: rgba(6,7,11,.82); backdrop-filter: blur(4px); }
+  .player-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+  .player-top b { font-family: var(--display); font-size: 20px; }
+  .player-top .links { gap: 8px; }
+  .player-top .btn { padding: 7px 12px; font-size: 14px; }
+  .phone { width: min(390px, 92vw, calc((100dvh - 96px) * 0.4615)); aspect-ratio: 390 / 845; border-radius: 34px; border: 6px solid #2A2F3C; overflow: hidden; background: #000; box-shadow: 0 40px 80px rgba(0,0,0,.6); }
+  .phone iframe { width: 100%; height: 100%; border: 0; display: block; }
+  @media (max-width: 520px) {
+    #player { width: 100vw; height: 100dvh; margin: 0; }
+    #player[open] { display: flex; flex-direction: column; }
+    .player-top { padding: 10px 12px 0; }
+    .phone { width: 100%; flex: 1; aspect-ratio: auto; border-radius: 0; border: 0; }
   }
 </style>
 </head>
@@ -157,10 +173,14 @@
 
     <article class="project">
       <div>
-        <span class="tag">Prototype · Mobile web</span>
+        <span class="tag">Playable prototype · Mobile web</span>
         <h3>Sky Hopper</h3>
         <p>A one-touch flying game for commutes. Hop island to island and upgrade your plane.</p>
         <div class="chips"><span>HTML5</span><span>Mobile web</span><span>Solo</span></div>
+        <div class="links">
+          <button class="btn primary" type="button" data-play="games/sky-hopper/" data-name="Sky Hopper">&#9654; Play</button>
+          <a class="btn" href="games/sky-hopper/" target="_blank" rel="noopener">Full screen &#8599;</a>
+        </div>
       </div>
       <div class="shots two">
         <img src="img/sky-flight.webp" alt="Sky Hopper plane flying over the sea collecting coins" loading="lazy">
@@ -170,10 +190,14 @@
 
     <article class="project">
       <div>
-        <span class="tag">Prototype · Mobile web</span>
+        <span class="tag">Playable prototype · Mobile web</span>
         <h3>Journey of Words</h3>
         <p>The world has lost its colour. Fill in the missing letters to bring each place back.</p>
         <div class="chips"><span>HTML5</span><span>Mobile web</span><span>Solo</span></div>
+        <div class="links">
+          <button class="btn primary" type="button" data-play="games/journey-of-words/" data-name="Journey of Words">&#9654; Play</button>
+          <a class="btn" href="games/journey-of-words/" target="_blank" rel="noopener">Full screen &#8599;</a>
+        </div>
       </div>
       <div class="shots two">
         <img src="img/journey-play.webp" alt="Journey of Words puzzle with letter tiles filling in a sentence" loading="lazy">
@@ -183,10 +207,14 @@
 
     <article class="project">
       <div>
-        <span class="tag">Prototype · Mobile web</span>
+        <span class="tag">Playable prototype · Mobile web</span>
         <h3>Paint Flow</h3>
         <p>Load the cannons and paint the picture, one colour at a time.</p>
         <div class="chips"><span>HTML5</span><span>Mobile web</span><span>Solo</span></div>
+        <div class="links">
+          <button class="btn primary" type="button" data-play="games/paint-flow/" data-name="Paint Flow">&#9654; Play</button>
+          <a class="btn" href="games/paint-flow/" target="_blank" rel="noopener">Full screen &#8599;</a>
+        </div>
       </div>
       <div class="shots two">
         <img src="img/paint-play.webp" alt="Paint Flow level 1, a heart picture waiting to be painted by a cannon" loading="lazy">
@@ -243,5 +271,52 @@
   </footer>
 
 </div>
+
+<dialog id="player" aria-labelledby="player-name">
+  <div class="player-top">
+    <b id="player-name">Game</b>
+    <div class="links">
+      <a class="btn" id="player-full" href="#" target="_blank" rel="noopener">Full screen &#8599;</a>
+      <button class="btn" type="button" id="player-close" aria-label="Close game">&#10005; Close</button>
+    </div>
+  </div>
+  <div class="phone"><iframe id="player-frame" title="Game" allow="autoplay; fullscreen"></iframe></div>
+</dialog>
+<script>
+  // Opens a game in the phone-shaped player. Clearing the frame on close stops the game and its sound.
+  (function () {
+    var dlg = document.getElementById('player');
+    var frame = document.getElementById('player-frame');
+    var title = document.getElementById('player-name');
+    var full = document.getElementById('player-full');
+    if (!dlg || typeof dlg.showModal !== 'function') return; // very old browsers: buttons fall back below
+    document.querySelectorAll('[data-play]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var src = btn.getAttribute('data-play');
+        title.textContent = btn.getAttribute('data-name');
+        frame.title = btn.getAttribute('data-name');
+        full.href = src;
+        frame.src = src;
+        dlg.showModal();
+        frame.focus();
+      });
+    });
+    document.getElementById('player-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', function () { frame.src = 'about:blank'; });
+    // While the game has focus it receives the keys, so listen for Esc inside it too (same site, so this is allowed).
+    frame.addEventListener('load', function () {
+      try {
+        frame.contentWindow.addEventListener('keydown', function (e) { if (e.key === 'Escape') dlg.close(); });
+      } catch (err) { /* frame not reachable: the Close button still works */ }
+    });
+  })();
+  // Fallback when <dialog> is unsupported: open the game in a new tab instead.
+  if (typeof HTMLDialogElement === 'undefined') {
+    document.querySelectorAll('[data-play]').forEach(function (btn) {
+      btn.addEventListener('click', function () { window.open(btn.getAttribute('data-play'), '_blank'); });
+    });
+  }
+</script>
 </body>
 </html>
