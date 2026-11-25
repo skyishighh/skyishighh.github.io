@@ -98,6 +98,17 @@
   .skill-card li span { color: var(--soft); font-size: 14.5px; }
   .skills.tools { margin-top: 18px; }
   .project, #adro, #more { scroll-margin-top: 20px; }
+  .sec-lede { color: var(--soft); margin: -18px 0 26px; max-width: 60ch; }
+  .studied { display: inline-block; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--rule); width: 100%; font-family: var(--mono); font-size: 12.5px; text-decoration: none; }
+  .studied:hover { text-decoration: underline; }
+  .decon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+  .decon { background: var(--panel); border: 1px solid var(--rule); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; scroll-margin-top: 20px; }
+  .decon h3 { font-size: 28px; font-weight: 800; }
+  .decon .meta { margin: 2px 0 14px; color: var(--soft); font-family: var(--mono); font-size: 12.5px; }
+  .decon ul { margin: 0 0 18px; padding-left: 18px; color: var(--soft); font-size: 15px; display: grid; gap: 8px; }
+  .decon .take { margin-top: auto; background: rgba(255,196,61,.08); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 12px 14px; }
+  .decon .take b { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; font-weight: 500; }
+  .decon .take p { margin: 0; font-size: 15px; }
   footer { margin-top: 90px; padding: 44px 0 60px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
   footer h2 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 800; }
   footer p { color: var(--soft); margin: 8px 0 0; font-family: var(--mono); font-size: 14px; }
@@ -141,6 +152,7 @@
       <a href="#games">Games</a>
       <a href="#adro">Level design</a>
       <a href="#more">More work</a>
+      <a href="#deconstructions">Deconstructions</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -272,6 +284,7 @@
           <li><a href="#sky-hopper">Sky Hopper</a><span>One-touch flying. Hold to climb, release to dive.</span></li>
           <li><a href="#paint-flow">Paint Flow</a><span>Load colour cannons onto a belt to paint the picture.</span></li>
         </ul>
+        <a class="studied" href="#triple-match">Studied: Triple Match 3D &#8594;</a>
       </div>
       <div class="skill-card">
         <span class="tag">02</span>
@@ -280,6 +293,7 @@
           <li><a href="#adro">Adro Games</a><span>Guided players through levels with focal points, props and signage.</span></li>
           <li><a href="#more">Flux Eternum &amp; Skybound</a><span>Designed the level flow for two first-person platformers.</span></li>
         </ul>
+        <a class="studied" href="#limbo">Studied: Limbo &#8594;</a>
       </div>
       <div class="skill-card">
         <span class="tag">03</span>
@@ -287,6 +301,7 @@
         <ul>
           <li><a href="#sky-hopper">Sky Hopper</a><span>Fully upgraded planes got too fast to react to. I capped the speed and made every obstacle pattern leave a guaranteed safe lane.</span></li>
         </ul>
+        <a class="studied" href="#candy-crush">Studied: Candy Crush Saga &#8594;</a>
       </div>
       <div class="skill-card">
         <span class="tag">04</span>
@@ -295,6 +310,7 @@
           <li><a href="#settle-snap">Settle &amp; Snap</a><span>Chapter jigsaw rewards, a weekly pass, daily objectives and bonus rounds.</span></li>
           <li><a href="#sky-hopper">Sky Hopper</a><span>Coins, permanent upgrades, and a garage of three planes, each with its own ability.</span></li>
         </ul>
+        <a class="studied" href="#royal-match">Studied: Royal Match &#8594;</a>
       </div>
       <div class="skill-card">
         <span class="tag">05</span>
@@ -304,6 +320,7 @@
           <li><a href="#more">Lost Origins</a><span>The look and mood of a post-apocalyptic world.</span></li>
           <li><a href="#more">Skybound</a><span>A rain-soaked night setting.</span></li>
         </ul>
+        <a class="studied" href="#inside">Studied: Inside &#8594;</a>
       </div>
       <div class="skill-card">
         <span class="tag">06</span>
@@ -316,6 +333,75 @@
     </div>
     <div class="skills tools">
       <span>Unity</span><span>Unreal Engine</span><span>Design docs</span><span>GitHub</span><span>Miro</span>
+    </div>
+  </section>
+
+  <section id="deconstructions">
+    <h2 class="sec-title">Deconstructions</h2>
+    <p class="sec-lede">How games I admire handle each skill, and what I take from them into my own work.</p>
+    <div class="decon-grid">
+      <article class="decon" id="limbo">
+        <span class="tag">Level design &amp; pacing</span>
+        <h3>Limbo</h3>
+        <p class="meta">Playdead, 2010</p>
+        <ul>
+          <li>Only move, jump and grab, and no tutorial at all. The levels do every bit of the teaching.</li>
+          <li>Puzzles are built expecting you to die first. Quick respawns turn each death into a lesson.</li>
+          <li>Each puzzle uses very few pieces. The challenge is what you do with them, not finding them.</li>
+          <li>It often leads you to expect one thing, then pulls the rug out.</li>
+          <li>Where it slips: some deaths can't be avoided without already knowing they're coming.</li>
+        </ul>
+        <div class="take"><b>What I take from it</b><p>One new rule at a time, with nothing else competing for attention. It's why Sky Hopper introduces one new obstacle per island.</p></div>
+      </article>
+      <article class="decon" id="triple-match">
+        <span class="tag">Core mechanic design</span>
+        <h3>Triple Match 3D</h3>
+        <p class="meta">BoomBox Games, 2022</p>
+        <ul>
+          <li>Builds on the Match 3D subgenre: pick three identical objects out of a messy 3D pile.</li>
+          <li>Picking items from a pile feels tactile, almost like a fidget toy, not like swapping icons on a grid.</li>
+          <li>A small tray at the bottom is the pressure. Fill it with mismatches and the level is lost.</li>
+          <li>Boosters like Magnet, Undo and Freeze Time rescue a level before you give up.</li>
+        </ul>
+        <div class="take"><b>What I take from it</b><p>Settle &amp; Snap keeps the tactile pile but makes the tray one-way, so the skill being tested is restraint, not speed.</p></div>
+      </article>
+      <article class="decon" id="candy-crush">
+        <span class="tag">Difficulty balancing</span>
+        <h3>Candy Crush Saga</h3>
+        <p class="meta">King, 2012</p>
+        <ul>
+          <li>Hard spikes are deliberate. The infamous level 65 was hard because it was meant to end an update.</li>
+          <li>King judges levels with data, such as how long players take to give up, and reworks weak ones.</li>
+          <li>Bots play thousands of runs to estimate a level's difficulty before players ever see it.</li>
+          <li>Luck is kept in the mix on purpose, so less skilled players can still progress.</li>
+          <li>The criticism: some players feel certain levels are tuned to push them toward buying help.</li>
+        </ul>
+        <div class="take"><b>What I take from it</b><p>Paint Flow already tests every level against bot playthroughs. Next I'd plan hard spikes with deliberate easy levels after them.</p></div>
+      </article>
+      <article class="decon" id="royal-match">
+        <span class="tag">Systems &amp; economy</span>
+        <h3>Royal Match</h3>
+        <p class="meta">Dream Games, 2021</p>
+        <ul>
+          <li>One currency, coins, buys extra moves, boosters and lives. Easy to understand.</li>
+          <li>The Butler's Gift gives free boosters for winning levels in a row, and resets when you lose.</li>
+          <li>A monthly pass of 30 reward steps. The paid tier raises max lives from 5 to 8.</li>
+          <li>Offers appear at moments of friction: a hard level, or one move short of winning.</li>
+        </ul>
+        <div class="take"><b>What I take from it</b><p>Settle &amp; Snap already has a weekly pass and daily objectives. A win-streak reward like the Butler's Gift is my next idea.</p></div>
+      </article>
+      <article class="decon" id="inside">
+        <span class="tag">Environment mood</span>
+        <h3>Inside</h3>
+        <p class="meta">Playdead, 2016</p>
+        <ul>
+          <li>No HUD, no text and no dialogue. The world tells the whole story.</li>
+          <li>A near-monochrome palette, where the boy's red shirt is one of the only bright colours.</li>
+          <li>The colour shifts from area to area, carrying the feeling of progress, emotion and tension.</li>
+          <li>Lighting is placed by hand rather than calculated automatically, so every scene is art-directed.</li>
+        </ul>
+        <div class="take"><b>What I take from it</b><p>At Adro I gave each area its own colour mood, a cool crystal cave against a warm lava zone. In Seven Runners, red is reserved only for things that kill you.</p></div>
+      </article>
     </div>
   </section>
 
