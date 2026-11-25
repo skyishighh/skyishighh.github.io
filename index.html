@@ -88,6 +88,16 @@
   .skills { display: flex; flex-wrap: wrap; gap: 8px; }
   .skills span { padding: 8px 14px; border-radius: 999px; background: var(--panel); border: 1px solid var(--rule); font-size: 14.5px; }
 
+  .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+  .skill-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 16px; padding: 22px; }
+  .skill-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 14px; }
+  .skill-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .skill-card li { display: grid; gap: 2px; }
+  .skill-card li a { font-weight: 600; text-decoration: none; font-size: 15px; }
+  .skill-card li a:hover { text-decoration: underline; }
+  .skill-card li span { color: var(--soft); font-size: 14.5px; }
+  .skills.tools { margin-top: 18px; }
+  .project, #adro, #more { scroll-margin-top: 20px; }
   footer { margin-top: 90px; padding: 44px 0 60px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; }
   footer h2 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 800; }
   footer p { color: var(--soft); margin: 8px 0 0; font-family: var(--mono); font-size: 14px; }
@@ -156,7 +166,7 @@
   <section id="games">
     <h2 class="sec-title">Games I'm building</h2>
 
-    <article class="project">
+    <article class="project" id="settle-snap">
       <div>
         <span class="tag">Flagship · In development</span>
         <h3>Settle &amp; Snap</h3>
@@ -171,7 +181,7 @@
       </div>
     </article>
 
-    <article class="project">
+    <article class="project" id="sky-hopper">
       <div>
         <span class="tag">Playable prototype · Mobile web</span>
         <h3>Sky Hopper</h3>
@@ -188,7 +198,7 @@
       </div>
     </article>
 
-    <article class="project">
+    <article class="project" id="journey-of-words">
       <div>
         <span class="tag">Playable prototype · Mobile web</span>
         <h3>Journey of Words</h3>
@@ -205,7 +215,7 @@
       </div>
     </article>
 
-    <article class="project">
+    <article class="project" id="paint-flow">
       <div>
         <span class="tag">Playable prototype · Mobile web</span>
         <h3>Paint Flow</h3>
@@ -251,10 +261,61 @@
     </div>
   </section>
 
-  <section>
+  <section id="skills">
     <h2 class="sec-title">What I bring</h2>
-    <div class="skills">
-      <span>Core mechanic design</span><span>Level design &amp; pacing</span><span>Difficulty balancing</span><span>Systems &amp; economy</span><span>Environment mood</span><span>Playtesting &amp; QA</span><span>Unity</span><span>Unreal Engine</span><span>Design docs</span>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <span class="tag">01</span>
+        <h3>Core mechanic design</h3>
+        <ul>
+          <li><a href="#settle-snap">Settle &amp; Snap</a><span>A one-way tray where the stars reward restraint, not speed.</span></li>
+          <li><a href="#sky-hopper">Sky Hopper</a><span>One-touch flying. Hold to climb, release to dive.</span></li>
+          <li><a href="#paint-flow">Paint Flow</a><span>Load colour cannons onto a belt to paint the picture.</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="tag">02</span>
+        <h3>Level design &amp; pacing</h3>
+        <ul>
+          <li><a href="#adro">Adro Games</a><span>Guided players through levels with focal points, props and signage.</span></li>
+          <li><a href="#more">Flux Eternum &amp; Skybound</a><span>Designed the level flow for two first-person platformers.</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="tag">03</span>
+        <h3>Difficulty balancing</h3>
+        <ul>
+          <li><a href="#sky-hopper">Sky Hopper</a><span>Fully upgraded planes got too fast to react to. I capped the speed and made every obstacle pattern leave a guaranteed safe lane.</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="tag">04</span>
+        <h3>Systems &amp; economy</h3>
+        <ul>
+          <li><a href="#settle-snap">Settle &amp; Snap</a><span>Chapter jigsaw rewards, a weekly pass, daily objectives and bonus rounds.</span></li>
+          <li><a href="#sky-hopper">Sky Hopper</a><span>Coins, permanent upgrades, and a garage of three planes, each with its own ability.</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="tag">05</span>
+        <h3>Environment mood</h3>
+        <ul>
+          <li><a href="#adro">Adro Games</a><span>A cool crystal cave against a warm lava zone, built from colour and light.</span></li>
+          <li><a href="#more">Lost Origins</a><span>The look and mood of a post-apocalyptic world.</span></li>
+          <li><a href="#more">Skybound</a><span>A rain-soaked night setting.</span></li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <span class="tag">06</span>
+        <h3>Playtesting &amp; QA</h3>
+        <ul>
+          <li><a href="#adro">Adro Games</a><span>Playtested levels and an in-development level design tool, and reported bugs to the engineers.</span></li>
+          <li><a href="#settle-snap">Settle &amp; Snap</a><span>Found and fixed feel bugs in the scattered toys, such as items jumping on first touch and spinning the wrong way.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="skills tools">
+      <span>Unity</span><span>Unreal Engine</span><span>Design docs</span><span>GitHub</span><span>Miro</span>
     </div>
   </section>
 
