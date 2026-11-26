@@ -66,7 +66,8 @@
   .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
   .chips span { font-family: var(--mono); font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--rule); color: var(--soft); }
   .shots { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 16px; overflow-x: auto; padding-bottom: 4px; }
-  .shots img { width: 100%; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: 18px; border: 2px solid #2A2F3C; background: #000; }
+  .project .chips:last-child { margin-bottom: 0; }
+  .shots img, .shots video { width: 100%; aspect-ratio: 1 / 2; object-fit: cover; object-position: top; border-radius: 18px; border: 2px solid #2A2F3C; background: #000; }
   .shots.two { grid-auto-columns: minmax(150px, 220px); justify-content: start; }
 
   /* Adro mosaic */
@@ -184,12 +185,11 @@
         <h3>Settle &amp; Snap</h3>
         <p>A cosy sorting puzzle: pick toys into a one-way tray, match in threes, and earn stars for restraint.</p>
         <div class="chips"><span>Unity 6</span><span>Android</span><span>Solo</span><span>210 levels</span><span>IGDC 2026</span></div>
-        <a class="btn primary" href="https://drive.google.com/drive/folders/1fRsbS3CttNWFtx56Ky3R4TsTEZyImwe2?usp=sharing">Watch gameplay</a>
       </div>
       <div class="shots">
-        <img src="img/settle-home.webp" alt="Settle and Snap home screen with Pip the hedgehog and the Play button" loading="lazy">
-        <img src="img/settle-play.webp" alt="Settle and Snap level with toys scattered on a table and a combo in the tray" loading="lazy">
-        <img src="img/settle-delivery.webp" alt="Settle and Snap delivery mode, drawing lines from toys to the children waiting for them" loading="lazy">
+        <video src="img/settle-home.mp4" poster="img/settle-home-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Settle and Snap home screen: Pip the hedgehog with coins and the Play button"></video>
+        <video src="img/settle-play.mp4" poster="img/settle-play-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Settle and Snap level: tapping toys from the table into the one-way tray"></video>
+        <video src="img/settle-delivery.mp4" poster="img/settle-delivery-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Settle and Snap delivery mode: toys travel from the wagon to the children who want them"></video>
       </div>
     </article>
 
@@ -463,6 +463,12 @@
     document.querySelectorAll('[data-play]').forEach(function (btn) {
       btn.addEventListener('click', function () { window.open(btn.getAttribute('data-play'), '_blank'); });
     });
+  }
+</script>
+<script>
+  // Respect "reduce motion": show the still poster frame instead of the looping clip.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); });
   }
 </script>
 </body>
