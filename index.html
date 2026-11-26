@@ -106,6 +106,9 @@
   .decon { background: var(--panel); border: 1px solid var(--rule); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; scroll-margin-top: 20px; }
   .decon h3 { font-size: 28px; font-weight: 800; }
   .decon .meta { margin: 2px 0 14px; color: var(--soft); font-family: var(--mono); font-size: 12.5px; }
+  .decon.wide { grid-column: 1 / -1; }
+  .decon .parts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 32px; }
+  .decon h4 { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); margin: 0 0 8px; }
   .decon ul { margin: 0 0 18px; padding-left: 18px; color: var(--soft); font-size: 15px; display: grid; gap: 8px; }
   .decon .take { margin-top: auto; background: rgba(255,196,61,.08); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 12px 14px; }
   .decon .take b { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; font-weight: 500; }
@@ -284,7 +287,7 @@
           <li><a href="#sky-hopper">Sky Hopper</a><span>One-touch flying. Hold to climb, release to dive.</span></li>
           <li><a href="#paint-flow">Paint Flow</a><span>Load colour cannons onto a belt to paint the picture.</span></li>
         </ul>
-        <a class="studied" href="#triple-match">Studied: Triple Match 3D &#8594;</a>
+        <a class="studied" href="#royal-match">Studied: Royal Match &#8594;</a>
       </div>
       <div class="skill-card">
         <span class="tag">02</span>
@@ -353,18 +356,6 @@
         </ul>
         <div class="take"><b>What I take from it</b><p>One new rule at a time, with nothing else competing for attention. It's why Sky Hopper introduces one new obstacle per island.</p></div>
       </article>
-      <article class="decon" id="triple-match">
-        <span class="tag">Core mechanic design</span>
-        <h3>Triple Match 3D</h3>
-        <p class="meta">BoomBox Games, 2022</p>
-        <ul>
-          <li>Builds on the Match 3D subgenre: pick three identical objects out of a messy 3D pile.</li>
-          <li>Picking items from a pile feels tactile, almost like a fidget toy, not like swapping icons on a grid.</li>
-          <li>A small tray at the bottom is the pressure. Fill it with mismatches and the level is lost.</li>
-          <li>Boosters like Magnet, Undo and Freeze Time rescue a level before you give up.</li>
-        </ul>
-        <div class="take"><b>What I take from it</b><p>Settle &amp; Snap keeps the tactile pile but makes the tray one-way, so the skill being tested is restraint, not speed.</p></div>
-      </article>
       <article class="decon" id="candy-crush">
         <span class="tag">Difficulty balancing</span>
         <h3>Candy Crush Saga</h3>
@@ -378,18 +369,6 @@
         </ul>
         <div class="take"><b>What I take from it</b><p>Paint Flow already tests every level against bot playthroughs. Next I'd plan hard spikes with deliberate easy levels after them.</p></div>
       </article>
-      <article class="decon" id="royal-match">
-        <span class="tag">Systems &amp; economy</span>
-        <h3>Royal Match</h3>
-        <p class="meta">Dream Games, 2021</p>
-        <ul>
-          <li>One currency, coins, buys extra moves, boosters and lives. Easy to understand.</li>
-          <li>The Butler's Gift gives free boosters for winning levels in a row, and resets when you lose.</li>
-          <li>A monthly pass of 30 reward steps. The paid tier raises max lives from 5 to 8.</li>
-          <li>Offers appear at moments of friction: a hard level, or one move short of winning.</li>
-        </ul>
-        <div class="take"><b>What I take from it</b><p>Settle &amp; Snap already has a weekly pass and daily objectives. A win-streak reward like the Butler's Gift is my next idea.</p></div>
-      </article>
       <article class="decon" id="inside">
         <span class="tag">Environment mood</span>
         <h3>Inside</h3>
@@ -401,6 +380,32 @@
           <li>Lighting is placed by hand rather than calculated automatically, so every scene is art-directed.</li>
         </ul>
         <div class="take"><b>What I take from it</b><p>At Adro I gave each area its own colour mood, a cool crystal cave against a warm lava zone. In Seven Runners, red is reserved only for things that kill you.</p></div>
+      </article>
+      <article class="decon wide" id="royal-match">
+        <span class="tag">Core mechanic design · Systems &amp; economy</span>
+        <h3>Royal Match</h3>
+        <p class="meta">Dream Games, 2021</p>
+        <div class="parts">
+        <div>
+        <h4>The core mechanic</h4>
+        <ul>
+          <li>A simple base: match three or more items of one colour, or blast them with power-ups, to reach each level's goal.</li>
+          <li>Better matches make stronger tools. Five in a line makes a Light Ball, five in an L or T makes TNT, and the harder a power-up is to make, the stronger it is.</li>
+          <li>Power-ups combine. A Light Ball with a Rocket turns every item of the most common colour into Rockets.</li>
+          <li>Generous and fast: power-ups come naturally from normal matches, and short animations keep the board readable.</li>
+        </ul>
+        </div>
+        <div>
+        <h4>The economy</h4>
+        <ul>
+          <li>One currency, coins, buys extra moves, boosters and lives. Easy to understand.</li>
+          <li>The Butler's Gift gives free boosters for winning levels in a row, and resets when you lose.</li>
+          <li>A monthly pass of 30 reward steps. The paid tier raises max lives from 5 to 8.</li>
+          <li>Offers appear at moments of friction: a hard level, or one move short of winning.</li>
+        </ul>
+        </div>
+        </div>
+        <div class="take"><b>What I take from it</b><p>Playing well should feel rewarding before spending ever comes into it. Better matches earn stronger power-ups for free, and in Settle &amp; Snap stars reward restraint the same way. A win-streak reward like the Butler's Gift is my next idea.</p></div>
       </article>
     </div>
   </section>
